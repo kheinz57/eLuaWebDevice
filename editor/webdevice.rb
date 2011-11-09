@@ -1,6 +1,6 @@
 require 'sinatra'
 
-get '/code/:filename' do
+get '/code/:filename/:dummy' do
     print ("get "+params[:filename]+"\n") 
     send_file '../device/code/'+params[:filename]
 end

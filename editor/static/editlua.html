@@ -45,6 +45,7 @@
         </td></tr>
     </table>
     <script  type="text/javascript">
+      var counter=0;
       var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
         tabMode: "indent",
         matchBrackets: true,
@@ -68,8 +69,8 @@
     $('#loadbutton').click(function(){
         file = $('#devices').val();
         $('#filename').val(file)
-
-        $.get("code/"+file, function(data){
+        counter = counter + 1;
+        $.get("code/"+file+"/"+counter, function(data){
             editor.setValue(data);
         }); 
     });
