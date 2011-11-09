@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <title>WebDevice Editor</title>
+    <link rel="stylesheet" href="/lib/codemirror.css">
+    <script src="lib/codemirror.js"></script>
+    <script src="lib/lua.js"></script>
+    <script src="lib/jquery-1.6.4.min.js"></script>
+    <style type="text/css">
+        .CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
+        body {font: 100.01% Verdana, Arial, Helvetica, sans-serif;}
+        * {margin:0;padding:0;}
+        #seite {width:100%;margin: 0 auto;}
+        #kopfbereich {padding: 20px;background-color:lightblue;}
+        #inhalt {background-color: lightgreen;margin-right: 252px;padding: 20px;}
+        #steuerung {float: right;width:250px;padding: 20px;
+            background-color: #EEEEEE;border: 1px solid black;}
+        
+    </style>
+    <link rel="stylesheet" href="lib/neat.css">
+    <link rel="stylesheet" href="/lib/docs.css">
+
+  </head>
+  <body>
+    <div id="seite">
+      <div id="kopfbereich">
+      </div>
+      <div id="steuerung">
+          <table>
+            <tr><input id="filename" type="text" size="10" value="dev.lua"></input></tr>
+            <tr><input id="savebutton" type="button" value="Save"/></tr>
+            <tr><input id="loadbutton" type="button" value="Load"/></tr>
+            </tr>
+          <table>
+      </div>
+<!--
+      <div id="inhalt">
+          <text id="code" name="code"></text>
+      </div>
+-->
+    </div>
+    <script  type="text/javascript">
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        tabMode: "indent",
+        matchBrackets: true,
+        theme: "neat",
+        lineNumbers: true
+      });
+      
+      $.get("code/dev.lua", function(data){
+          editor.setValue(data);
+      }); 
+    
+    $('#savebutton').click(function(){
+        data = editor.getValue();
+        $.post("code/dev.lua", {'code': data})
+    }); 
+    $('#loadbutton').click(function(){
+      var file = $('#filename').getValue()
+      alert(file)
+      $.get("code/"+file, function(data){
+          editor.setValue(data);
+      }); 
+    }); 
+    </script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <title>WebDevice Editor</title>
+    <link rel="stylesheet" href="/lib/codemirror.css">
+    <script src="lib/codemirror.js"></script>
+    <script src="lib/lua.js"></script>
+    <script src="lib/jquery-1.6.4.min.js"></script>
+    <script src="jquery.autoresize.js"></script>
+    <style type="text/css">
+        .CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
+        body {font: 100.00% Verdana, Arial, Helvetica, sans-serif;}
+        * {margin:0;padding:0;}
+        
+    </style>
+    <link rel="stylesheet" href="lib/neat.css">
+<!--
+    <link rel="stylesheet" href="/lib/docs.css">
+-->
+  </head>
+  <body>
+    <table width="100%" height="100%" border="0">
+      <tr>
+        <td colspan="2" style="background-color:#FFA500;">
+          <h1>WebDevice Editor - LUA</h1>
+        </td>
+      </tr>
+
+      <tr valign="top">
+        <td style="background-color:#000090;width:100px;text-align:top;">
+          <input id="filename" type="text" size="10" value="dev.lua"></input><br>
+          <input id="savebutton" type="button" value="Save"/>
+          <input id="loadbutton" type="button" value="Load"/><br>
+          <select id="devices" size="15" width="50">
+          </select>
+        </td>
+        <td style="background-color:#EEEEEE;text-align:top;">
+          <textarea id="code" name="code" ></textarea>
+        </td>
+      </tr>
+        <tr valign="bottom">
+        <td colspan="2" style="background-color:#FFA500;">
+        select a device out of the list, press load to see it in the editor. Now you may change something. 
+        Press save to store it with he given name in the textfield 
+        </td></tr>
+    </table>
+    <script  type="text/javascript">
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        tabMode: "indent",
+        matchBrackets: true,
+        theme: "neat",
+        lineNumbers: true
+      });
+      
+      $.getJSON("devices",function(data){
+          data.forEach(function (device, idx){
+              $("<option>").val(device).text(device).appendTo("#devices");
+          });
+      }); 
+    
+    $('#savebutton').click(function(){
+        data = editor.getValue();
+        var file = $('#filename').val()
+        var url = "code/"+file;
+        $.post(url, {'code': data})
+    });
+    
+    $('#loadbutton').click(function(){
+        file = $('#devices').val();
+        $('#filename').val(file)
+
+        $.get("code/"+file, function(data){
+            editor.setValue(data);
+        }); 
+    });
+//    $('#code').height(500);
+//        $('*').autoResize({minHeight:100,minWidth:300})
+    
+    </script>
+  </body>
+</html>
