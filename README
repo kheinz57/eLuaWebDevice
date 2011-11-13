@@ -1,0 +1,36 @@
+The main ideas and driving forces for this project are:
+1. easy way for connection devices to the internet
+2. make continous deployment/delivery possible for small devices
+3. make flexibel solutions to connect existing devices to the internet
+4. simple for those physically installing the device in the field
+5. cheap and low energy solution
+6. configuration, developing and debugging to the webbrowser.
+
+Technics used within this project and there rational of use:
+
+1. LUA: is a very powerfull - multi paradigm - language with very small memory footprint.
+        and high performance. Well suited for embedded devices 
+        (http://www.lua.org)
+        
+2. eLUA: A LUA distribution for various embedded devices. Including some unique extension
+         and modifications for LUA on this type of devices. Especially TCP/IP over ethernet.
+         (http://www.eluaproject.net)
+         
+3. Sinatra: A web server framework written in ruby. Utilizing rubys capabilities for building 
+            domain specific languages, this framework makes it possible to write a webserver
+            in just a couple lines of code. In our example the web server - including specific 
+            post and JSON interface to jQuery - is implemented in 14 lines of code only!!
+            (http://www.sinatrarb.com)
+
+4. jQuery:  Well known framework simplifies development of interactive web pages
+            (http://jquery.com/)
+
+5. CodeMirror: Javascript/CSS library for text editors with syntax highlighting in the browser.
+               There are a couple of those out. But this one supports LUA out of the box.
+               (http://codemirror.net)
+               
+6. LUA server: Because of a bug in the TCP/IP implementation of eLUA it wasn't possible
+               to simply make a http get to read the file from the sinatra web server. Therefor
+               this is a workround to still get in running. (It seems the second tcp package - or
+               even more then this - gets lost somewhere)
+
