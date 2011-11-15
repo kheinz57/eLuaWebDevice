@@ -6,6 +6,9 @@ The main ideas and driving forces for this project are:
 5. cheap and low energy solution
 6. configuration, developing and debugging to the webbrowser.
 
+The basic structure can be seen in the doc tree. Currently there is a 
+pixmap only. I may do some screencasts on youtube later on. 
+
 The editor part used within this project is running as demo on here:
 http://vs0232.your-vserver.de:12345/editlua.html
 Feel free to read, modify and create new files there.
