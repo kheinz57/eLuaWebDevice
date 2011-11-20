@@ -1,0 +1,36 @@
+Welcome to the introduction of the project eLuaWebDevice
+Let's start with some rationals.
+All the web developers are developing software pretty agil.
+But we - the embedded folks - are still pretty slow
+One reason is that we face real world challenges like safety.
+the  other cause is our limitation in deployment infrastructure
+This can't really be solved easily for isolated devices.
+Those things without connection to the world aaa internet.
+But fortunately this is an endangered species. More and more
+devices are getting connected to the big net. 
+
+But this still hasn't changed the way we develop embedded devices.
+
+The net nowadays is more like an constantly changing organism then
+a fixed set of requirements you have to fullfill. Can we deal with 
+that?
+
+Configuration is the other issue we face. Those devices have to be
+cheap. Can you afford sending a specialist to a remote place, setting
+it up? Not really. Plug and play is the way to go.  At least for the internet connection. All the other effort is best done whereever you
+can start a webbrowser.
+
+Thinking about the paradigm 'programming over configuration'
+combined with the wish to deploy often lead me to this dream:
+
+A cheap device with connection to the internet and a hardware-id
+gets its application from a server on the net. In case the net isn't
+available it uses the previously downloaded and stored version from 
+for the internal flash or sd-card.
+
+Those applications are developed directly in the webbrowser. No special
+IDE. No programm to install. Useable wherever a webbrowser is available.
+
+By the time I came accross Lua - even more eLUA - I found a simple 
+solution for my dream.
+
