@@ -7,7 +7,8 @@ The main ideas and driving forces for this project are:
 6. configuration, developing and debugging to the webbrowser.
 
 The basic structure can be seen in the doc tree. Currently there is a 
-pixmap only. I may do some screencasts on youtube later on. 
+pixmap only. There is a - series of - screencast at youtube:
+http://www.youtube.com/watch?v=W_aXsutL4rQ
 
 The editor part used within this project is running as demo on here:
 http://vs0232.your-vserver.de:12345/editlua.html
