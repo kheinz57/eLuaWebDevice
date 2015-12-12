@@ -1,3 +1,4 @@
+rem change to the server directory
 cd server
 echo starting lua code server
 echo http doesn't work because of TCP/IP Bugs in eLUA
